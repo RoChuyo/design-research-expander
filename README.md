@@ -15,6 +15,7 @@ Design Research Expander 是一个用于 Codex 的研究辅助 Skill，面向产
 | 中文输出 | 默认以中文进行分析和总结，保留必要的论文题名、品牌名、标准名和专有名词。 |
 | 资料归档 | 创建中文命名的资料夹、来源库、案例图册、方向矩阵、方法计划和综合报告。 |
 | 图片案例管理 | 产品图片文件名包含产品名和特点总结词，并在 Markdown 文档中插入本地图片路径。 |
+| Notion 副本同步 | 创建 Markdown 研究文档时，若 Notion 连接可用，会同步创建同内容 Notion 页面并回写链接。 |
 
 ## 适用场景
 
@@ -72,6 +73,12 @@ cp -R skill/design-research-expander ~/.codex/skills/
 
 ```text
 使用 $design-research-expander 为我的产品设计课题收集文献、产品案例和设计奖项案例，并生成中文资料夹归档。
+```
+
+### 生成 Markdown 并同步 Notion
+
+```text
+使用 $design-research-expander 汇总我的研究资料，创建 Markdown 报告，并在 Notion 中创建同样的副本。
 ```
 
 ### 比较研究方向
@@ -139,6 +146,7 @@ cp -R skill/design-research-expander ~/.codex/skills/
         │   └── openai.yaml
         ├── references
         │   ├── document-archive-rules.md
+        │   ├── notion-sync-rules.md
         │   └── product-design-research-guide.md
         └── scripts
             └── create_chinese_research_archive.py

@@ -1,6 +1,6 @@
 ---
 name: design-research-expander
-description: 根据用户提供的研究计划书、开题材料、论文设想、产品设计课题或毕业设计方向，自动收集并整合相关论文、设计案例、现有产品、竞品、趋势资料和方法论线索，发散产品设计领域的可能研究方向，估计各方向工作量与理由，并用中文输出结构化分析和一整段启发性总结；当需要创建文件、文档、图片资料夹或研究资料库时，默认使用中文文件名，并按任务类型归档分类。Use when the user asks to expand a research proposal, find literature and product references, generate product design research directions, estimate workload, synthesize sources for design research planning, or create organized Chinese-named research documents and folders.
+description: 根据用户提供的研究计划书、开题材料、论文设想、产品设计课题或毕业设计方向，自动收集并整合相关论文、设计案例、现有产品、竞品、趋势资料和方法论线索，发散产品设计领域的可能研究方向，估计各方向工作量与理由，并用中文输出结构化分析和一整段启发性总结；当需要创建文件、文档、图片资料夹或研究资料库时，默认使用中文文件名，并按任务类型归档分类；当创建 Markdown 研究文档且 Notion 连接可用时，同时在 Notion 中创建同内容副本。Use when the user asks to expand a research proposal, find literature and product references, generate product design research directions, estimate workload, synthesize sources for design research planning, create organized Chinese-named research documents and folders, or sync research Markdown documents to Notion.
 ---
 
 # Design Research Expander
@@ -13,6 +13,8 @@ description: 根据用户提供的研究计划书、开题材料、论文设想�
 
 当创建任何研究文档、资料夹、图片集、来源库、方向矩阵、方法计划或计划书改写文件时，默认使用中文命名，并按照任务类型建立分类文件夹。产品图片文件名必须包含产品名和 2-4 个中文特点总结词；案例图册或调研 Markdown 必须用本地路径插入图片，并在图片附近说明来源和可借鉴点。只有代码约定文件、系统必须识别的文件、原始下载文件或用户明确要求保留的文件名可以使用非中文命名。
 
+当创建 `.md` 研究文档、案例图册、来源库、方向矩阵、方法计划、计划书改写稿或综合报告时，若 Notion 插件/连接器可用，必须同时在 Notion 中创建同内容副本，并在本地索引或原 Markdown 文档末尾记录 Notion 页面链接。Notion 副本的标题必须与 Markdown 中文文件名主体一致；若用户当前在 Notion 页面中工作，优先把副本创建为该页面的子页面；否则先搜索与研究计划书、项目名或主题最相关的 Notion 页面作为父页面。若无法确定父页面或没有 Notion 权限，仍然完成本地 Markdown，并在最终回复中明确说明 Notion 同步未完成及所需信息。
+
 ## 工作流程
 
 1. 仔细阅读用户提供的研究计划书，提取设计对象、目标用户、使用场景、研究目标、拟用方法、预期产出、限制条件和不明确假设。
@@ -24,6 +26,7 @@ description: 根据用户提供的研究计划书、开题材料、论文设想�
 7. 最后必须输出一个连续的中文段落，语气像研究导师在帮助用户打开想象。这个最终段落不能是项目符号、表格或分段总结。
 8. 如果需要把结果保存到本地，先建立中文项目资料夹，再根据任务将文件放入分类子文件夹；同时创建中文索引文档，说明每个文件的用途和阅读顺序。
 9. 如果保存产品案例图片，先根据案例内容提炼特点总结词，再用 `编号_产品名_特点1_特点2_特点3.扩展名` 命名图片；在 Markdown 中使用 `![产品名：特点总结](/绝对路径/图片文件名)` 插入图片，避免只给图片链接或只列文件名。
+10. 每次创建 Markdown 文档后，执行 Notion 同步检查：确认是否有可用 Notion 工具；确认父页面；把 Markdown 内容转换为 Notion 可接受的 Markdown；将本地图片路径替换为原始公开图片 URL 或写成“本地图片路径”说明；创建 Notion 页面；把返回的 Notion URL 记录到本地索引/文档和最终回复。
 
 ## 输出结构
 
@@ -40,5 +43,7 @@ description: 根据用户提供的研究计划书、开题材料、论文设想�
 当项目属于产品设计领域，需要更细的检索方式、方向发散维度、工作量等级或中文输出约束时，读取 `references/product-design-research-guide.md`。
 
 当任务要求生成、保存、整理或归档文档、图片、案例图册时，读取 `references/document-archive-rules.md`，并遵循其中的中文命名、任务分类、图片命名、Markdown 插图、索引与版本管理规则。需要新建完整资料库时，可运行 `scripts/create_chinese_research_archive.py <中文项目名> --root <保存目录>` 来生成中文分类文件夹和 `00_资料夹索引.md`。
+
+当任务创建 Markdown 文档且需要或可以同步到 Notion 时，读取 `references/notion-sync-rules.md`。Notion 同步是本地 Markdown 的副本流程，不应替代本地文件创建；如果两者内容需要差异，优先保证本地 Markdown 的图片绝对路径可渲染，Notion 版优先使用公开外链图片和可跨设备阅读的来源链接。
 
 当回答依赖资料时，必须在答案中提供引用或链接。如果无法浏览，明确说明资料收集受限，请用户提供文件或链接，同时仍可基于已有计划书给出临时方向。

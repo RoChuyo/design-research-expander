@@ -1,0 +1,6 @@
+interface:
+  display_name: "产品设计研究扩展"
+  short_description: "面向产品设计计划书的中文资料收集与方向扩展"
+  default_prompt: "Use $design-research-expander to analyze my product design research proposal, gather literature and product references, estimate workload, and summarize directions in Chinese."
+policy:
+  allow_implicit_invocation: true
